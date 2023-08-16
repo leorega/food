@@ -11,12 +11,14 @@ const getRecipeById = async (idRecipe) => {
                 id: idRecipe
             },
             include: {
-                model: Diet
+                model: Diet,
+                attributes: ["name"],
+                through: {
+                    attributes: []
+                }
             }
         });
-        if (recipe) {
-            return response.status(200).json(recipe);
-        };
+        return recipe;
     }
     else {
         const response = await axios.get(`https://api.spoonacular.com/recipes/${idRecipe}/information?includeNutrition=false&apiKey=${API_KEY}`);

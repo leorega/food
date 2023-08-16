@@ -3,6 +3,6 @@ const dietsHandler = require('../handlers/dietsHandler');
 
 const dietsRoute = Router();
 
-dietsRoute.get("/diets", dietsHandler);
+dietsRoute.get("/", dietsHandler);
 
 module.exports = dietsRoute;

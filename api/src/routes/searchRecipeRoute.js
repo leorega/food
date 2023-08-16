@@ -1,8 +1,8 @@
 const { Router } = require('express'); 
-const searchRecipeHandler = require('../handlers/recipeByNameHandler');
+const recipeByNameHandler = require('../handlers/recipeByNameHandler');
 
 const searchRecipeRoute = Router();
 
-searchRecipeRoute.get("/name", searchRecipeHandler);
+searchRecipeRoute.get("/name", recipeByNameHandler);
 
 module.exports = searchRecipeRoute;
