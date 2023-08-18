@@ -1,0 +1,21 @@
+.cont {
+    display: flex;
+    width: 25%;
+}
+
+.input {
+    height: 2rem;
+    border-radius: 0.3rem 0 0 0.3rem;
+    border: 1px solid black;
+}
+
+.button {
+    margin-left: 0.5rem;
+    border-radius: 0 0.3rem 0.3rem 0;
+    background-color: white;
+    border: 1px solid black;
+    color: green;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}

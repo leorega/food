@@ -1,0 +1,56 @@
+.cont {
+    display: flex;
+    align-items: center;
+    width: 38%;
+    justify-content: flex-start;
+    height: 100%;
+    padding-left: 1rem;
+}
+
+.filters_cont {
+    display: flex;
+    align-items: center;
+    padding: 0.1rem;
+}
+
+.filters_cont span {
+    font-weight: bold;
+}
+
+.button {
+    height: 5vh;
+    background-color: rgb(255, 255, 255, 0.2);
+    border-radius: 0.3rem;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-left: 0.3rem;
+    border: none;
+    cursor: pointer;
+}
+
+.ul {
+    display: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: rgb(0, 0, 0, 0.2);
+    border-radius: 5px;
+    position: absolute;
+    text-align: center;
+    padding: 2px;
+}
+
+div ul li {
+    cursor: pointer;
+}
+
+div ul li:hover {
+  cursor: pointer;
+  background-color: rgb(30, 195, 30);
+}  
+
+div button:focus + ul,
+div ul:hover {
+    display: block;
+}
