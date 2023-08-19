@@ -3,12 +3,14 @@ import PagBar from '../pagBar/PagBar';
 import CreateBar from '../createBar/CreateBar';
 import styles from './addBar.module.css';
 
-const AddBar = () => {
+const AddBar = (props) => {
+    
+    const { prevPage, nextPage, currentPage } = props;
 
     return (
         <div className={styles.cont}>
             <FiltersBar/>
-            <PagBar/>
+            <PagBar prevPage={prevPage} currentPage={currentPage} nextPage={nextPage}/>
             <CreateBar/>
         </div>
     );

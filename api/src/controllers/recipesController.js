@@ -13,6 +13,7 @@ const getRecipes = async () => {
                 name: rec.title,
                 image: rec.image,
                 summary: rec.summary,
+                diets: rec.diets,
                 healthScore: rec.healthScore,
                 stepByStep: rec.analyzedInstructions[0]?.steps?.map(step => step.step)
             };
