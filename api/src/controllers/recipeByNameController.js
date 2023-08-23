@@ -1,6 +1,6 @@
 require('dotenv').config();
 const { Op } = require('sequelize');
-const { Recipe } = require('../db.js');
+const { Recipe, Diet } = require('../db.js');
 const axios = require('axios');
 const { API_KEY } = process.env;
 const URL = "https://api.spoonacular.com/recipes/complexSearch?addRecipeInformation=true";
@@ -12,8 +12,27 @@ const getRecipeByName = async (name) => {
             name: {
                 [Op.iLike]: `%${name}%`
             }
+        },
+        include: {
+            model: Diet,
+            attributes: ["name"],
+            through: {
+                attributes: []
+            }
         }
     });
+
+    const recipesFromDBFormatted = recipesFromDB.map(recipe => {
+        return {
+          id: recipe.id,
+          name: recipe.name,
+          image: recipe.image,
+          diets: recipe.Diets?.map(diet => diet.name),
+          summary: recipe.summary,
+          healthScore: recipe.healthScore,
+          stepByStep: recipe.stepByStep
+        };
+      });
 
     const response = await axios.get(`${URL}&query=${name}&apiKey=${API_KEY}`);
     const data = response.data.results;
@@ -29,7 +48,7 @@ const getRecipeByName = async (name) => {
         }
         return recipe;
     });
-    let allRecipesByName = [...recipesFromDB, ...recipesFromApi];
+    let allRecipesByName = [...recipesFromDBFormatted, ...recipesFromApi];
     if (allRecipesByName.length > 0) {
         return allRecipesByName;
     }

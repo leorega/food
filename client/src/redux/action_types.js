@@ -5,3 +5,7 @@ export const FILTER_BY_DIET = 'FILTER_BY_DIET';
 export const FILTER_BY_SOURCE = 'FILTER_BY_SOURCE';
 export const SORT_BY_NAME = 'SORT_BY_NAME';
 export const SORT_BY_HEALTHSCORE = 'SORT_BY_HEALTHSCORE';
+export const RESET_RECIPE = 'RESET_RECIPE';
+export const GET_DIETS = 'GET_DIETS';
+export const GET_DIETS_DB = 'GET_DIETS_DB';
+export const CREATE_RECIPE = 'CREATE_RECIPE';

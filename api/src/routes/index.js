@@ -4,6 +4,7 @@ const recipeDetailRoute = require('./recipeDetailRoute.js');
 const searchRecipeRoute = require('./searchRecipeRoute.js');
 const createRecipeRoute = require('./createRecipeRoute.js');
 const dietsRoute = require('./dietsRoute.js');
+const dietsDBRoute = require('./dietsDBRoute.js');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
@@ -14,6 +15,7 @@ router.use('/recipes', recipeDetailRoute);
 router.use('/recipes', recipesRoute);
 router.use('/recipes', createRecipeRoute);
 router.use('/diets', dietsRoute);
+router.use('/dietsDB', dietsDBRoute);
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 

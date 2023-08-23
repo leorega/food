@@ -1,17 +1,28 @@
 .cont {
+    width: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    background-image: url('./food-main.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 0.3rem;
+    box-shadow: 0 0 5px 1px white;
 }
 
 .nav_button {
     width: 100%;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
 }
 
 .button {
-    width: 100%;
+    width: 10%;
     height: 5vh;
-    background-color: rgb(255, 255, 255, 0.2);
+    background-color: rgb(255, 99, 71, 0.6);
     border: none;
     border-radius: 0.3rem;
     color: white;
@@ -22,5 +33,5 @@
 }
 
 .button:hover {
-    box-shadow: 0 0 3px 3px black;
+    box-shadow: 0 0 3px 1px black;
 }

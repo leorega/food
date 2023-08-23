@@ -6,6 +6,8 @@
     margin-top: 1rem;
     margin-bottom: 1rem;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-columns: 1fr;
     row-gap: 1rem;
+    place-content: center;
 }

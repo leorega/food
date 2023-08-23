@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './filtersBar.module.css';
 
 const FiltersBar = () => {

@@ -18,7 +18,15 @@ const getRecipeById = async (idRecipe) => {
                 }
             }
         });
-        return recipe;
+        return recipeFromDB = {
+            id: recipe.id,
+            name: recipe.name,
+            image: recipe.image,
+            diets: recipe.Diets?.map(diet => diet.name),
+            summary: recipe.summary,
+            healthScore: recipe.healthScore,
+            stepByStep: recipe.stepByStep
+        };
     }
     else {
         const response = await axios.get(`https://api.spoonacular.com/recipes/${idRecipe}/information?includeNutrition=false&apiKey=${API_KEY}`);

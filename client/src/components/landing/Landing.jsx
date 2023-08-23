@@ -1,7 +1,17 @@
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { getAllRecipes } from '../../redux/actions';
 import styles from './landing.module.css';
 
 const Landing = () => {
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getAllRecipes());
+    },[]);
+
     return (
         <div className={styles.cont}>
             <div>
