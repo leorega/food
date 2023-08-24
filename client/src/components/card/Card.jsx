@@ -12,11 +12,19 @@ const Card = (props) => {
         navigate(`/detail/${recipe.id}`);
     };
 
+    let formattedDiets;
+    if (typeof recipe.id === "string") {
+        formattedDiets = recipe.Diets?.map(diet => diet.name).join(', ');
+    }
+    else {
+        formattedDiets = recipe.diets?.join(', ');
+    }
+    
     return (
         <div className={styles.cont}>
             <img className={styles.image} src={recipe.image} alt={recipe.name} />
             <h2 className={styles.title} onClick={navigateHandler} >{recipe.name}</h2>
-            <h4 className={styles.diets} >Diets: {recipe.diets?.join(', ')}</h4>
+            <h4 className={styles.diets} >Diets: {formattedDiets}</h4>
         </div>
     );
 };

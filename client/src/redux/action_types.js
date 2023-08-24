@@ -1,11 +1,11 @@
 export const GET_ALL_RECIPES = 'GET_ALL_RECIPES';
 export const GET_RECIPE_BY_ID = 'GET_RECIPE_BY_ID';
 export const GET_RECIPES_BY_NAME = 'GET_RECIPES_BY_NAME'; 
-export const FILTER_BY_DIET = 'FILTER_BY_DIET';
-export const FILTER_BY_SOURCE = 'FILTER_BY_SOURCE';
-export const SORT_BY_NAME = 'SORT_BY_NAME';
-export const SORT_BY_HEALTHSCORE = 'SORT_BY_HEALTHSCORE';
 export const RESET_RECIPE = 'RESET_RECIPE';
 export const GET_DIETS = 'GET_DIETS';
 export const GET_DIETS_DB = 'GET_DIETS_DB';
 export const CREATE_RECIPE = 'CREATE_RECIPE';
+export const FILTER_BY_DIET = 'FILTER_BY_DIET';
+export const FILTER_BY_SOURCE = 'FILTER_BY_SOURCE';
+export const SORT_BY_NAME = 'SORT_BY_NAME';
+export const SORT_BY_HEALTHSCORE = 'SORT_BY_HEALTHSCORE';

@@ -30,7 +30,6 @@
 .exit_button {
     height: 3rem;
     margin: 3rem;
-    width: 5%;
     background-color: tomato;
     color: white;
     border: 1px solid rgb(72, 72, 72);
@@ -70,4 +69,12 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin-bottom: 10px;
+}
+
+.errors {
+    color: red;
+    background-color: yellow;
+    text-align: center;
+    border-radius: 10px;
+    margin-top: 5px;
 }

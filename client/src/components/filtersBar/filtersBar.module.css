@@ -29,6 +29,10 @@
     cursor: pointer;
 }
 
+.button:hover {
+    box-shadow: 0 0 5px 1px white;
+}
+
 .ul {
     display: none;
     list-style: none;

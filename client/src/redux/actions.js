@@ -4,13 +4,11 @@ import { GET_ALL_RECIPES,
     GET_RECIPE_BY_ID, 
     RESET_RECIPE,
     GET_RECIPES_BY_NAME,
-    GET_DIETS,
     GET_DIETS_DB,
     FILTER_BY_DIET,
     FILTER_BY_SOURCE, 
     SORT_BY_NAME,
     SORT_BY_HEALTHSCORE, 
-    CREATE_RECIPE
 } from './action_types';
 
 export function getAllRecipes () {
@@ -65,7 +63,6 @@ export function getDietsDB () {
     return async function (dispatch) {
         try {
             const response = await axios.get('http://localhost:3001/dietsDB')
-            console.log(response);
             dispatch({
                 type: GET_DIETS_DB,
                 payload: response.data
@@ -75,6 +72,7 @@ export function getDietsDB () {
         };
     }; 
 };
+
 export function createRecipe (state) {
     return async function () {
         try {
@@ -84,4 +82,24 @@ export function createRecipe (state) {
             alert("There was a mistake. The recipe wasn't created");
         };
     };
-}
+};
+
+export const filterByDiet = (diet) => ({
+    type: FILTER_BY_DIET,
+    payload: diet,
+});
+  
+export const filterBySource = (source) => ({
+    type: FILTER_BY_SOURCE,
+    payload: source,
+});
+  
+export const sortByName = (order) => ({
+    type: SORT_BY_NAME,
+    payload: order,
+});
+  
+export const sortByHealthScore = (order) => ({
+    type: SORT_BY_HEALTHSCORE,
+    payload: order,
+});

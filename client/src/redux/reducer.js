@@ -6,9 +6,7 @@ import { GET_ALL_RECIPES,
     SORT_BY_NAME,
     SORT_BY_HEALTHSCORE, 
     RESET_RECIPE,
-    GET_DIETS,
-    GET_DIETS_DB,
-    CREATE_RECIPE
+    GET_DIETS_DB
 } from './action_types';
 
 let initialState = {
@@ -16,10 +14,7 @@ let initialState = {
     diets: [],
     allRecipesBackUp: [],
     recipeById: [],
-    recipesFilteredByDiet: [],
-    recipesFilteredBySource: [],
-    recipesSortByName: [],
-    recipesSortByHealthScore: []
+    filteredRecipes: []
 };
 
 function rootReducer (state = initialState, action) {
@@ -50,6 +45,50 @@ function rootReducer (state = initialState, action) {
                 ...state,
                 diets: action.payload
             }
+        case FILTER_BY_DIET:
+            return{
+                ...state,
+                allRecipes: state.allRecipesBackUp.filter(
+                    (recipe) => recipe.diets?.includes(action.payload)
+                )
+            }
+        case FILTER_BY_SOURCE:
+            let bySource;
+            if (action.payload === "API") {
+                bySource = state.allRecipesBackUp.filter(
+                    (recipe) => typeof recipe.id === 'number'
+                )
+            } else {
+                bySource = state.allRecipesBackUp.filter(
+                    (recipe) => typeof recipe.id !== 'number'
+                )    
+            }
+            return{
+                 ...state,
+                allRecipes: [...bySource]
+            }
+        case SORT_BY_NAME:
+            let byName;
+            if (action.payload === "Ascending") {
+                byName = [...state.allRecipes].sort((a, b) => a.name.localeCompare(b.name));
+            } else {
+                byName = [...state.allRecipes].sort((a, b) => b.name.localeCompare(a.name));
+            }
+            return {
+                ...state,
+                allRecipes: byName
+            };
+        case SORT_BY_HEALTHSCORE:
+            let byHealthScore;
+            if (action.payload === "Ascending") {
+                byHealthScore = [...state.allRecipes].sort((a, b) => a.healthScore - b.healthScore);
+            } else {
+                byHealthScore = [...state.allRecipes].sort((a, b) => b.healthScore - a.healthScore);
+            }
+            return {
+                ...state,
+                allRecipes: byHealthScore
+            };
         default:
             return state; 
     };

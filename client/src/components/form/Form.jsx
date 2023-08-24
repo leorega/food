@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createRecipe, getDietsDB } from '../../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
+import { validate } from '../../validations';
 import styles from './form.module.css';
 
 const Form = () => {
@@ -19,7 +20,16 @@ const Form = () => {
         image: '',
         diets: []
     });
-    console.log(formData);
+
+    const [errors, setErrors] = useState({
+        name: '',
+        summary: '',
+        healthScore: '',
+        stepByStep: '',
+        image: '',
+        diets: ''
+    });
+    
     useEffect(() => {
         dispatch(getDietsDB());
     },[]);
@@ -30,6 +40,12 @@ const Form = () => {
         ...prevFormData,
         [name]: name === 'stepByStep' ? [value] : value,
         }));
+        setErrors(
+            validate({
+                ...formData,
+                [name]: value
+            })
+        )
     };
 
     const handleCheckboxChange = (event) => {
@@ -59,7 +75,7 @@ const Form = () => {
 
     return (
         <div className={styles.cont}>
-            <button className={styles.exit_button} onClick={handleClose}>Exit</button>
+            <button className={styles.exit_button} onClick={handleClose}>Go to Home</button>
             <div className={styles.form_container}>
                 <h1 className={styles.title}>Create a New Recipe</h1>
                 <form className={styles.form} onSubmit={handleSubmit}>
@@ -67,10 +83,12 @@ const Form = () => {
                     Name:
                     </label>
                     <input className={styles.input} type="text" name="name" value={formData.name} onChange={handleInputChange}/>
+                    {errors.name && <span className={styles.errors}>{errors.name}</span>}
                     <label className={styles.label}>
                     Image:
                     </label>
                     <input className={styles.input} type="text" name="image" value={formData.image} onChange={handleInputChange}/>
+                    {errors.image && <span className={styles.errors}>{errors.image}</span>}
                     <label className={styles.label}>
                     Summary:
                     </label>
@@ -79,6 +97,7 @@ const Form = () => {
                     Health score:
                     </label>
                     <input className={styles.input} type="text" name="healthScore" value={formData.healthScore} onChange={handleInputChange}/>
+                    {errors.healthScore && <span className={styles.errors}>{errors.healthScore}</span>}
                     <label className={styles.label}>
                     Step by step:
                     </label>

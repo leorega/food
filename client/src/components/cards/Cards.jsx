@@ -2,7 +2,6 @@ import React from 'react';
 import AddBar from '../addBar/AddBar';
 import Card from '../card/Card';
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import styles from './cards.module.css';
 
 const Cards = (props) => {
@@ -17,6 +16,7 @@ const Cards = (props) => {
     else {
         totalPages = Math.floor(recipes.length / 9) + 1;
     }
+
     const [currentPage, setCurrentPage] = useState(0);
     const [aPageRecipes, setAPageRecipes] = useState([]);
 
