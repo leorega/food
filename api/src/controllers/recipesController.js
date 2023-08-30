@@ -16,6 +16,18 @@ const getRecipes = async () => {
         }
     });
 
+    const recipesFromDB = recipesDB.map(recipe => {
+        return {
+            id: recipe.id,
+            name: recipe.name,
+            image: recipe.image,
+            diets: recipe.Diets?.map(diet => diet.name), 
+            summary: recipe.summary,
+            healthScore: recipe.healthScore,
+            stepByStep: recipe.stepByStep
+        };
+    });
+
     const response = await axios.get(`${URL}${API_KEY}`);
     if (response.data.results && response.data.results.length > 0) {
         const recipes = response.data.results.map(rec => {
@@ -31,7 +43,7 @@ const getRecipes = async () => {
             return recipe;
         });
 
-        const allRecipes = [...recipesDB, ...recipes];
+        const allRecipes = [...recipesFromDB, ...recipes];
         return allRecipes;
     }  
     else {

@@ -38,7 +38,8 @@ function rootReducer (state = initialState, action) {
         case GET_RECIPES_BY_NAME:
             return {
                 ...state,
-                allRecipes: action.payload
+                allRecipes: action.payload,
+                allRecipesBackUp: action.payload
             } 
         case GET_DIETS_DB:
             return {

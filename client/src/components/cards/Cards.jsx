@@ -23,6 +23,10 @@ const Cards = (props) => {
     useEffect(() => {
         setAPageRecipes(recipes.slice(currentPage * recipesPerPage, (currentPage + 1) * recipesPerPage));
     }, [recipes, currentPage]); 
+
+    useEffect(() => {
+        setCurrentPage(0);
+    }, [recipes]);
     
     function nextPage () {
         const totalElements = recipes.length;

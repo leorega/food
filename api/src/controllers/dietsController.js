@@ -21,4 +21,4 @@ const dietsController = async () => {
     console.log("Dietas cargadas en la DB");
 };
 
-module.exports = dietsController;
+module.exports = { dietsController };

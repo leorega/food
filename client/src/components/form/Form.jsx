@@ -25,9 +25,7 @@ const Form = () => {
         name: '',
         summary: '',
         healthScore: '',
-        stepByStep: '',
         image: '',
-        diets: ''
     });
     
     useEffect(() => {
@@ -66,7 +64,9 @@ const Form = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        dispatch(createRecipe(formData));
+        if(!errors.name || !errors.healthScore || !errors.image || !errors.summary) {
+            dispatch(createRecipe(formData));
+        };
     };
 
     const handleClose = () => {
@@ -93,6 +93,7 @@ const Form = () => {
                     Summary:
                     </label>
                     <textarea className={styles.textarea} name="summary" value={formData.summary} onChange={handleInputChange}/>
+                    {errors.summary && <span className={styles.errors}>{errors.summary}</span>}
                     <label className={styles.label}>
                     Health score:
                     </label>
@@ -101,7 +102,7 @@ const Form = () => {
                     <label className={styles.label}>
                     Step by step:
                     </label>
-                    <textarea className={styles.textarea} name="stepByStep" value={formData.stepByStep} onChange={handleInputChange}/>
+                    <textarea className={styles.textarea} name="stepByStep" placeholder='If you want, you can add a step by step here' value={formData.stepByStep} onChange={handleInputChange}/>
                     <div className={styles.label}>
                     <p>Select Diets:</p>
                     <div className={styles.diets}>

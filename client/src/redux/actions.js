@@ -14,16 +14,16 @@ import { GET_ALL_RECIPES,
 export function getAllRecipes () {
     return async function (dispatch) {
         try {
-            const response = await axios.get('http://localhost:3001/recipes')
+            const response = await axios.get('http://localhost:3001/recipes');
             dispatch({
                 type: GET_ALL_RECIPES,
                 payload: response.data
             })
         } catch (error) {
-            alert(error.response.data.error);
+            alert(error.response.data.error)
         };
     };
-};
+ };
 
 export function getRecipeById (id) {
     return async function (dispatch) {
@@ -79,7 +79,7 @@ export function createRecipe (state) {
             await axios.post('http://localhost:3001/recipes', state)
             alert('Recipe created successfully')
         } catch (error) {
-            alert("There was a mistake. The recipe wasn't created");
+            alert("There was a mistake. The recipe wasn't created. Check the entered data...");
         };
     };
 };

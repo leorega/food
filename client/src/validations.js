@@ -7,7 +7,10 @@ export const validate = (input) => {
     if (nums.some(num => input.name.includes(num))) errors.name = 'The name must not include numbers';
     //IMAGE
     if (!input.image) errors.image = 'You must add an image';
+    //SUMMARY
+    if (!input.summary) errors.summary = 'You must add a summary';
     //HEALTH SCORE
+    if (!input.healthScore) errors.healthScore = 'You must add a health score';
     if(input.healthScore > 100 || input.healthScore < 0) errors.healthScore = 'Value must be between 0 and 100';
     return errors;
 }
